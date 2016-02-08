@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="AcmeFlightService"
+  targetNamespace="urn:specialtripsagency.acme.org:flightservice"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:specialtripsagency.acme.org:flightservice"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="urn:specialtripsagency.acme.org:flightservice"
+        schemaLocation="AcmeFlightService_schema1.xsd" />
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="bookFlight">
+    <wsdl:part name="parameters" element="tns:Booking">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bookFlightResponse">
+    <wsdl:part name="parameters" element="tns:BookingResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelBooking">
+    <wsdl:part name="parameters" element="tns:BookingCancellation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelBookingResponse">
+    <wsdl:part name="parameters" element="tns:BookingCancellationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listAvailablePlanes">
+    <wsdl:part name="parameters" element="tns:FlightRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listAvailablePlanesResponse">
+    <wsdl:part name="parameters" element="tns:Flight">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AcmeFlightServiceInterface">
+    <wsdl:operation name="listAvailablePlanes">
+      <wsdl:input name="listAvailablePlanes" message="tns:listAvailablePlanes">
+      </wsdl:input>
+      <wsdl:output name="listAvailablePlanesResponse" message="tns:listAvailablePlanesResponse">
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelBooking">
+      <wsdl:input name="cancelBooking" message="tns:cancelBooking">
+      </wsdl:input>
+      <wsdl:output name="cancelBookingResponse" message="tns:cancelBookingResponse">
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bookFlight">
+      <wsdl:input name="bookFlight" message="tns:bookFlight">
+      </wsdl:input>
+      <wsdl:output name="bookFlightResponse" message="tns:bookFlightResponse">
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AcmeFlightServiceSoapBinding" type="tns:AcmeFlightServiceInterface">
+    <soap:binding style="document"
+      transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listAvailablePlanes">
+      <soap:operation
+        soapAction="urn:specialtripsagency.acme.org:flightservice:listAvailablePlanes"
+        style="document" />
+      <wsdl:input name="listAvailablePlanes">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="listAvailablePlanesResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bookFlight">
+      <soap:operation soapAction="urn:specialtripsagency.acme.org:flightservice:bookFlight" style="document" />
+      <wsdl:input name="bookFlight">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="bookFlightResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelBooking">
+      <soap:operation soapAction="urn:specialtripsagency.acme.org:flightservice:cancelBooking" style="document" />
+      <wsdl:input name="cancelBooking">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelBookingResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AcmeFlightService">
+    <wsdl:port name="AcmeFlightServiceInterfaceImplPort" binding="tns:AcmeFlightServiceSoapBinding">
+      <soap:address location="http://localhost:8080/AcmeFlightServiceInterfaceImplPort" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
