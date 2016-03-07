@@ -24,6 +24,7 @@ public class AcmeFlightServiceImpl implements AcmeFlightServiceInterface {
         BookingCancellationResponse response = new BookingCancellationResponse();
         response.setStatus("CANCELLED");
         response.setCharge(0);
+        response.setBooking(parameters.getBooking());
         return response;
     }
 
@@ -35,7 +36,11 @@ public class AcmeFlightServiceImpl implements AcmeFlightServiceInterface {
         } else {
             response.setStatus("BOOKED");
         }
-        response.setBooking(parameters.getCarrier()+ generator.nextId());
+        if (parameters.getBooking() == null || parameters.getBooking().isEmpty()) {
+            response.setBooking(parameters.getCarrier()+ generator.nextId());
+        } else {
+            response.setBooking(parameters.getBooking());
+        }
         return response;
     }
 

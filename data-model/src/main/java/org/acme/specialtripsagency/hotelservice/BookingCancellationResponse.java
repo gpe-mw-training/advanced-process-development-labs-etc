@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="booking" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="charge" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
@@ -31,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "booking",    
     "status",
     "charge"
 })
@@ -41,8 +43,34 @@ public class BookingCancellationResponse
 
     private final static long serialVersionUID = 1L;
     @XmlElement(required = true)
+    protected String booking;
+    @XmlElement(required = true)
     protected String status;
     protected int charge;
+    
+    /**
+     * Gets the value of the booking property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBooking() {
+        return booking;
+    }
+
+    /**
+     * Sets the value of the status property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBooking(String booking) {
+        this.booking = booking;
+    }
 
     /**
      * Gets the value of the status property.

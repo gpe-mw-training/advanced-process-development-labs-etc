@@ -38,6 +38,7 @@ public class AcmeHotelServiceImpl implements AcmeHotelServiceInterface {
         BookingCancellationResponse response = new BookingCancellationResponse();
         response.setStatus("CANCELLED");
         response.setCharge(0);
+        response.setBooking(parameters.getBooking());
         return response;
     }
 
@@ -49,7 +50,11 @@ public class AcmeHotelServiceImpl implements AcmeHotelServiceInterface {
         } else {
             response.setStatus("BOOKED");
         }
-        response.setBooking(parameters.getHotelID()+ generator.nextId());
+        if (parameters.getBooking() == null || parameters.getBooking().isEmpty()) {
+            response.setBooking(parameters.getHotelID()+ generator.nextId());
+        } else {
+            response.setBooking(parameters.getBooking());
+        }
         return response;
     }
 
