@@ -9,6 +9,8 @@ import org.acme.specialtripsagency.hotelservice.Hotel;
 import org.acme.specialtripsagency.hotelservice.HotelBooking;
 import org.acme.specialtripsagency.hotelservice.HotelBookingResponse;
 import org.acme.specialtripsagency.hotelservice.HotelRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @WebService(serviceName = "AcmeHotelService", 
             endpointInterface = "org.acme.specialtripsagency.hotelservice.AcmeHotelServiceInterface", 
@@ -16,6 +18,8 @@ import org.acme.specialtripsagency.hotelservice.HotelRequest;
 public class AcmeHotelServiceImpl implements AcmeHotelServiceInterface {
     
     public static final IdGenerator generator = new IdGenerator();
+    
+    public static final Logger log = LoggerFactory.getLogger("AcmeHotelService");
 
     @Override
     public Hotel getAvailableHotels(HotelRequest parameters) {
@@ -39,6 +43,7 @@ public class AcmeHotelServiceImpl implements AcmeHotelServiceInterface {
         response.setStatus("CANCELLED");
         response.setCharge(0);
         response.setBooking(parameters.getBooking());
+        log.info("Hotel Cancelled : BookingId {}, Status {}", response.getBooking(), response.getStatus());
         return response;
     }
 
@@ -55,6 +60,7 @@ public class AcmeHotelServiceImpl implements AcmeHotelServiceInterface {
         } else {
             response.setBooking(parameters.getBooking());
         }
+        log.info("Hotel Booked : BookingId {}, Status {}", response.getBooking(), response.getStatus());
         return response;
     }
 
