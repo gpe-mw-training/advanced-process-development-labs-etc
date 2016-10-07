@@ -30,7 +30,7 @@ public interface AcmeFlightServiceInterface {
     public BookingResponse bookFlight(
         @WebParam(partName = "parameters", name = "Booking", targetNamespace = "urn:specialtripsagency.acme.org:flightservice")
         Booking parameters
-    );
+    ) throws AcmeFlightServiceException;
 
     @WebMethod(action = "urn:specialtripsagency.acme.org:flightservice:listAvailablePlanes")
     @WebResult(name = "Flight", targetNamespace = "urn:specialtripsagency.acme.org:flightservice", partName = "parameters")
