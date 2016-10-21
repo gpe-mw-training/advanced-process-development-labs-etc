@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns="urn:specialtripsagency.acme.org:flightservice" 
+	attributeFormDefault="unqualified" 
+	elementFormDefault="unqualified" 
+	targetNamespace="urn:specialtripsagency.acme.org:flightservice">
+  <xs:element name="Booking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="carrier" type="xs:string"/>
+        <xs:element name="flightNr" type="xs:string"/>
+        <xs:element name="travelClass" type="xs:string"/>
+        <xs:element name="type" type="xs:string"/>
+        <xs:element name="booking" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BookingCancellation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="booking" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BookingCancellationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="booking" type="xs:string"/>
+        <xs:element name="status" type="xs:string"/>
+        <xs:element name="charge" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="booking" type="xs:string"/>
+        <xs:element name="status" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Flight">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="carrier" type="xs:string"/>
+        <xs:element name="flight" type="xs:int"/>
+        <xs:element name="ratePerPerson" type="xs:decimal"/>
+        <xs:element name="startCity" type="xs:string"/>
+        <xs:element name="targetCity" type="xs:string"/>
+        <xs:element name="travelDate" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FlightRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="startCity" type="xs:string"/>
+        <xs:element name="endCity" type="xs:string"/>
+        <xs:element name="startDate" type="xs:string"/>
+        <xs:element name="endDate" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="acmeFlightServiceFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="faultCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="faultString" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AcmeFlightServiceFault" nillable="true" type="acmeFlightServiceFault"/>
+</xs:schema>

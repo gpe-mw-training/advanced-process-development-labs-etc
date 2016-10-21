@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="urn:specialtripsagency.acme.org:hotelservice"
+	xmlns="urn:specialtripsagency.acme.org:hotelservice" 
+	version="1.0">
+
+  <xs:element name="BookingCancellation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="booking" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="BookingCancellationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="booking" type="xs:string"/>
+        <xs:element name="status" type="xs:string"/>
+        <xs:element name="charge" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Hotel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hotelId" type="xs:int"/>
+        <xs:element name="hotelName" type="xs:string"/>
+        <xs:element name="ratePerPerson" type="xs:double"/>
+        <xs:element name="hotelCity" type="xs:string"/>
+        <xs:element name="availableFrom" type="xs:string"/>
+        <xs:element name="availableTo" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="HotelBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="hotelID" type="xs:string"/>
+        <xs:element name="hotelCity" type="xs:string"/>
+        <xs:element name="checkInDate" type="xs:string"/>
+        <xs:element name="checkOutDate" type="xs:string"/>
+        <xs:element name="quotedRoomType" type="xs:string"/>
+        <xs:element name="quotedAmount" type="xs:double"/>
+        <xs:element name="visitorName" type="xs:string"/>
+        <xs:element name="type" type="xs:string"/>
+        <xs:element name="booking" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="HotelBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="booking" type="xs:string"/>
+        <xs:element name="status" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="HotelRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="targetCity" type="xs:string"/>
+        <xs:element name="startDate" type="xs:string"/>
+        <xs:element name="endDate" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:complexType name="acmeHotelServiceFault">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="faultCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="faultString" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AcmeHotelServiceFault" nillable="true" type="acmeHotelServiceFault"/>
+
+</xs:schema>
