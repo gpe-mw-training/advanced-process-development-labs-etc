@@ -49,6 +49,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="HotelBookingFault">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="faultCode" type="xs:string"/>
+        <xs:element name="faultString" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="BookingCancellation">
     <xs:complexType>
       <xs:sequence>

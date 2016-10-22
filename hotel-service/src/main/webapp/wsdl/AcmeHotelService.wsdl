@@ -23,6 +23,10 @@
   <wsdl:message name="bookHotelResponse">
     <wsdl:part name="parameters" element="tns:HotelBookingResponse"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="bookHotelFault">
+    <wsdl:part name="fault" element="tns:HotelBookingFault">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="cancelBooking">
     <wsdl:part name="parameters" element="tns:BookingCancellation"></wsdl:part>
   </wsdl:message>
@@ -39,6 +43,7 @@
     <wsdl:operation name="bookHotel">
       <wsdl:input name="bookHotel" message="tns:bookHotel"></wsdl:input>
       <wsdl:output name="bookHotelResponse" message="tns:bookHotelResponse"></wsdl:output>
+      <wsdl:fault name="bookHotelFault" message="tns:bookHotelFault"></wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="cancelBooking">
       <wsdl:input name="cancelBooking" message="tns:cancelBooking"></wsdl:input>
@@ -69,6 +74,9 @@
       <wsdl:output name="bookHotelResponse">
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="bookHotelFault">
+        <soap:fault use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="cancelBooking">
       <soap:operation soapAction="urn:specialtripsagency.acme.org:hotelservice:cancelBooking" style="document" />

@@ -2,11 +2,13 @@ package org.acme.specialtripsagency.hotelservice.impl;
 
 import javax.jws.WebService;
 
+import org.acme.specialtripsagency.hotelservice.AcmeHotelServiceException;
 import org.acme.specialtripsagency.hotelservice.AcmeHotelServiceInterface;
 import org.acme.specialtripsagency.hotelservice.BookingCancellation;
 import org.acme.specialtripsagency.hotelservice.BookingCancellationResponse;
 import org.acme.specialtripsagency.hotelservice.Hotel;
 import org.acme.specialtripsagency.hotelservice.HotelBooking;
+import org.acme.specialtripsagency.hotelservice.HotelBookingFault;
 import org.acme.specialtripsagency.hotelservice.HotelBookingResponse;
 import org.acme.specialtripsagency.hotelservice.HotelRequest;
 import org.slf4j.Logger;
@@ -48,7 +50,14 @@ public class AcmeHotelServiceImpl implements AcmeHotelServiceInterface {
     }
 
     @Override
-    public HotelBookingResponse bookHotel(HotelBooking parameters) {
+    public HotelBookingResponse bookHotel(HotelBooking parameters) throws AcmeHotelServiceException {
+        if ("INVALID".equals(parameters.getHotelID())) {
+            HotelBookingFault fault = new HotelBookingFault();
+            String message = "Not a valid hotel id";
+            fault.setFaultCode("HOTEL_ID");
+            fault.setFaultString(message);
+            throw new AcmeHotelServiceException(message, fault);
+        }
         HotelBookingResponse response = new HotelBookingResponse();
         if ("PREBOOKING".equals(parameters.getType())) {
             response.setStatus("PREBOOKED");
