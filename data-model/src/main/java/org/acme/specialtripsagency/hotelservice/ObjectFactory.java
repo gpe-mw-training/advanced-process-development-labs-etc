@@ -76,5 +76,13 @@ public class ObjectFactory {
     public Hotel createHotel() {
         return new Hotel();
     }
+    
+    /**
+     * Create an instance of {@link HotelBookingFault }
+     * 
+     */
+    public HotelBookingFault createHotelBookingFault() {
+        return new HotelBookingFault();
+    }
 
 }

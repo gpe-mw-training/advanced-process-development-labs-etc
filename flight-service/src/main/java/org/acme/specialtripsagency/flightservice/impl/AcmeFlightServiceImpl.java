@@ -4,12 +4,14 @@ import java.math.BigDecimal;
 
 import javax.jws.WebService;
 
+import org.acme.specialtripsagency.flightservice.AcmeFlightServiceException;
 import org.acme.specialtripsagency.flightservice.AcmeFlightServiceInterface;
 import org.acme.specialtripsagency.flightservice.Booking;
 import org.acme.specialtripsagency.flightservice.BookingCancellation;
 import org.acme.specialtripsagency.flightservice.BookingCancellationResponse;
 import org.acme.specialtripsagency.flightservice.BookingResponse;
 import org.acme.specialtripsagency.flightservice.Flight;
+import org.acme.specialtripsagency.flightservice.FlightBookingFault;
 import org.acme.specialtripsagency.flightservice.FlightRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +36,14 @@ public class AcmeFlightServiceImpl implements AcmeFlightServiceInterface {
     }
 
     @Override
-    public BookingResponse bookFlight(Booking parameters) {
+    public BookingResponse bookFlight(Booking parameters) throws AcmeFlightServiceException {
+        if ("INVALID".equals(parameters.getCarrier())) {
+            FlightBookingFault fault = new FlightBookingFault();
+            String message = "Not a valid carrier";
+            fault.setFaultCode("CARRIER");
+            fault.setFaultString(message);
+            throw new AcmeFlightServiceException(message, fault);
+        }
         BookingResponse response = new BookingResponse();
         if ("PREBOOKING".equals(parameters.getType())) {
             response.setStatus("PREBOOKED");

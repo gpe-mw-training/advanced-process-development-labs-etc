@@ -37,5 +37,5 @@ public interface AcmeHotelServiceInterface {
     public HotelBookingResponse bookHotel(
         @WebParam(partName = "parameters", name = "HotelBooking", targetNamespace = "urn:specialtripsagency.acme.org:hotelservice")
         HotelBooking parameters
-    );
+    ) throws AcmeHotelServiceException;
 }
