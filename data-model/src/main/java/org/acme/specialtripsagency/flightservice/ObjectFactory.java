@@ -95,6 +95,14 @@ public class ObjectFactory {
     public BookingResponse createBookingResponse() {
         return new BookingResponse();
     }
+    
+    /**
+     * Create an instance of {@link FlightBookingFault }
+     * 
+     */
+    public FlightBookingFault createFlightBookingFault() {
+        return new FlightBookingFault();
+    }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AcmeFlightServiceFault }{@code >}}

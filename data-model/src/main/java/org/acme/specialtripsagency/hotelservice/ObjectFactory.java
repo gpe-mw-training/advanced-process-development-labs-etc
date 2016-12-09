@@ -95,6 +95,14 @@ public class ObjectFactory {
     public Hotel createHotel() {
         return new Hotel();
     }
+    
+    /**
+     * Create an instance of {@link HotelBookingFault }
+     * 
+     */
+    public HotelBookingFault createHotelBookingFault() {
+        return new HotelBookingFault();
+    }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link AcmeHotelServiceFault }{@code >}}

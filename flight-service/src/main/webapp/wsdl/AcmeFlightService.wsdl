@@ -17,6 +17,10 @@
     <wsdl:part name="parameters" element="tns:BookingResponse">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="bookFlightFault">
+    <wsdl:part name="fault" element="tns:FlightBookingFault">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="cancelBooking">
     <wsdl:part name="parameters" element="tns:BookingCancellation">
     </wsdl:part>
@@ -51,6 +55,8 @@
       </wsdl:input>
       <wsdl:output name="bookFlightResponse" message="tns:bookFlightResponse">
       </wsdl:output>
+      <wsdl:fault name="bookFlightFault" message="tns:bookFlightFault">
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AcmeFlightServiceSoapBinding" type="tns:AcmeFlightServiceInterface">
@@ -75,6 +81,9 @@
       <wsdl:output name="bookFlightResponse">
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="bookFlightFault">
+        <soap:fault use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="cancelBooking">
       <soap:operation soapAction="urn:specialtripsagency.acme.org:flightservice:cancelBooking" style="document" />

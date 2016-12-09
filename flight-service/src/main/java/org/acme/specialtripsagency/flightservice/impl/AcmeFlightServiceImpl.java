@@ -5,13 +5,13 @@ import java.math.BigDecimal;
 import javax.jws.WebService;
 
 import org.acme.specialtripsagency.flightservice.AcmeFlightServiceException;
-import org.acme.specialtripsagency.flightservice.AcmeFlightServiceFault;
 import org.acme.specialtripsagency.flightservice.AcmeFlightServiceInterface;
 import org.acme.specialtripsagency.flightservice.Booking;
 import org.acme.specialtripsagency.flightservice.BookingCancellation;
 import org.acme.specialtripsagency.flightservice.BookingCancellationResponse;
 import org.acme.specialtripsagency.flightservice.BookingResponse;
 import org.acme.specialtripsagency.flightservice.Flight;
+import org.acme.specialtripsagency.flightservice.FlightBookingFault;
 import org.acme.specialtripsagency.flightservice.FlightRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,29 @@ public class AcmeFlightServiceImpl implements AcmeFlightServiceInterface {
 
 	public static final IdGenerator generator = new IdGenerator();
 
-	public static final Logger log = LoggerFactory.getLogger("AcmeFlightService");
+    @Override
+    public BookingResponse bookFlight(Booking parameters) throws AcmeFlightServiceException {
+        if ("INVALID".equals(parameters.getCarrier())) {
+            FlightBookingFault fault = new FlightBookingFault();
+            String message = "Not a valid carrier";
+            fault.setFaultCode("CARRIER");
+            fault.setFaultString(message);
+            throw new AcmeFlightServiceException(message, fault);
+        }
+        BookingResponse response = new BookingResponse();
+        if ("PREBOOKING".equals(parameters.getType())) {
+            response.setStatus("PREBOOKED");
+        } else {
+            response.setStatus("BOOKED");
+        }
+        if (parameters.getBooking() == null || parameters.getBooking().isEmpty()) {
+            response.setBooking(parameters.getCarrier()+ generator.nextId());
+        } else {
+            response.setBooking(parameters.getBooking());
+        }
+        log.info("Flight Booked : BookingId {}, Status {}", response.getBooking(), response.getStatus());
+        return response;
+    }
 
 	@Override
 	public BookingCancellationResponse cancelBooking(BookingCancellation parameters) {
