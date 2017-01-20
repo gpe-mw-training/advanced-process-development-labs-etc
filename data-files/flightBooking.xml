@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<map-type xmlns:ns2="urn:specialtripsagency.acme.org:flightservice">
+  <entries>
+    <entry>
+      <key>flightBooking</key>
+      <value xsi:type="ns2:Booking" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <ns2:carrier>AA</ns2:carrier>
+        <ns2:flightNr>AAC2243</ns2:flightNr>
+				<ns2:travelClass>PRIORITY</ns2:travelClass>
+				<ns2:type>INTERNATIONAL</ns2:type>
+				<ns2:booking>AAC2243</ns2:booking>
+      </value>
+    </entry>
+  </entries>
+</map-type>
