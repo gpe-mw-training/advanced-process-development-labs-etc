@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 public class AcmeFlightServiceImpl implements AcmeFlightServiceInterface {
 
 	public static final IdGenerator generator = new IdGenerator();
+	public static final Logger log = LoggerFactory.getLogger("AcmeFlightService");
 
     @Override
     public BookingResponse bookFlight(Booking parameters) throws AcmeFlightServiceException {
@@ -52,31 +53,6 @@ public class AcmeFlightServiceImpl implements AcmeFlightServiceInterface {
 		response.setCharge(0);
 		response.setBooking(parameters.getBooking());
 		log.info("Flight Cancelled : BookingId {}, Status {}", response.getBooking(), response.getStatus());
-		return response;
-	}
-
-	@Override
-	public BookingResponse bookFlight(Booking parameters) throws AcmeFlightServiceException {
-		if ("INVALID".equals(parameters.getCarrier())) {
-			AcmeFlightServiceFault fault = new AcmeFlightServiceFault();
-			String message = "not a valid carrier";
-			fault.setFaultCode("CARRIER");
-			fault.setFaultString(message);
-			throw new AcmeFlightServiceException(message, fault);
-		}
-
-		BookingResponse response = new BookingResponse();
-		if ("PREBOOKING".equals(parameters.getType())) {
-			response.setStatus("PREBOOKED");
-		} else {
-			response.setStatus("BOOKED");
-		}
-		if (parameters.getBooking() == null || parameters.getBooking().isEmpty()) {
-			response.setBooking(parameters.getCarrier() + generator.nextId());
-		} else {
-			response.setBooking(parameters.getBooking());
-		}
-		log.info("Flight Booked : BookingId {}, Status {}", response.getBooking(), response.getStatus());
 		return response;
 	}
 
