@@ -4,8 +4,9 @@
 			"carrier": "AA",
 			"flightNr": "AAD3345",
       "travelClass": "BUSINESS",
-      "type": "DOMESTIC",
+      "type": "PREBOOKING",
       "booking": "JAN 21 2017"
 		}
-	}
+	},
+	"applicantName": "John Doe"
 }

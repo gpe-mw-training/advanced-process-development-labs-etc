@@ -7,9 +7,13 @@
         <ns2:carrier>AA</ns2:carrier>
         <ns2:flightNr>AAC2243</ns2:flightNr>
 				<ns2:travelClass>PRIORITY</ns2:travelClass>
-				<ns2:type>INTERNATIONAL</ns2:type>
+				<ns2:type>PREBOOKING</ns2:type>
 				<ns2:booking>AAC2243</ns2:booking>
       </value>
+    </entry>
+    <entry>
+      <key>applicantName</key>
+      <value>John Doe</value>
     </entry>
   </entries>
 </map-type>
