@@ -13,13 +13,12 @@ echo "Default assemble completed"
 echo "Custom assemble to copy /tmp/src/data-model/target/data-model-1.0.jar to $JBOSS_HOME/standalone/lib/ext ..."
 cp /tmp/src/data-model/target/data-model-1.0.jar $JBOSS_HOME/standalone/lib/ext
 
-# Original assemble defines $DEPLOY_DIR
 # Copy the flight service
-echo "Custom assemble to copy /tmp/src/flight-service/target/flight-service-1.0.war to $DEPLOY_DIR ..."
-cp /tmp/src/flight-service/target/flight-service-1.0.war $DEPLOY_DIR
+echo "Custom assemble to copy /tmp/src/flight-service/target/flight-service-1.0.war to $JBOSS_HOME/standalone/deployments ..."
+cp /tmp/src/flight-service/target/flight-service-1.0.war $JBOSS_HOME/standalone/deployments
 
 # Copy the hotel service
-echo "Custom assemble to copy /tmp/src/hotel-service/target/hotel-service-1.0.war to $DEPLOY_DIR ..."
-cp /tmp/src/hotel-service/target/hotel-service-1.0.war $DEPLOY_DIR
+echo "Custom assemble to copy /tmp/src/hotel-service/target/hotel-service-1.0.war to $JBOSS_HOME/standalone/deployments ..."
+cp /tmp/src/hotel-service/target/hotel-service-1.0.war $JBOSS_HOME/standalone/deployments
 
 exit 0
