@@ -9,19 +9,17 @@ echo "Using custom assemble script"
 
 echo "Default assemble completed"
 
-LOCAL_SOURCE_DIR = /tmp/src
-
 # Copy the data model
-echo "Custom assemble to copy $LOCAL_SOURCE_DIR/data-model/target/data-model-1.0.jar to $JBOSS_HOME/standalone/lib/ext ..."
-cp $LOCAL_SOURCE_DIR/data-model/target/data-model-1.0.jar $JBOSS_HOME/standalone/lib/ext
+echo "Custom assemble to copy /tmp/src/data-model/target/data-model-1.0.jar to $JBOSS_HOME/standalone/lib/ext ..."
+cp /tmp/src/data-model/target/data-model-1.0.jar $JBOSS_HOME/standalone/lib/ext
 
 # Original assemble defines $DEPLOY_DIR
 # Copy the flight service
-echo "Custom assemble to copy $LOCAL_SOURCE_DIR/flight-service/target/flight-service-1.0.war to $DEPLOY_DIR ..."
-cp $LOCAL_SOURCE_DIR/flight-service/target/flight-service-1.0.war $DEPLOY_DIR
+echo "Custom assemble to copy /tmp/src/flight-service/target/flight-service-1.0.war to $DEPLOY_DIR ..."
+cp /tmp/src/flight-service/target/flight-service-1.0.war $DEPLOY_DIR
 
 # Copy the hotel service
-echo "Custom assemble to copy $LOCAL_SOURCE_DIR/hotel-service/target/hotel-service-1.0.war to $DEPLOY_DIR ..."
-cp $LOCAL_SOURCE_DIR/hotel-service/target/hotel-service-1.0.war $DEPLOY_DIR
+echo "Custom assemble to copy /tmp/src/hotel-service/target/hotel-service-1.0.war to $DEPLOY_DIR ..."
+cp /tmp/src/hotel-service/target/hotel-service-1.0.war $DEPLOY_DIR
 
 exit 0
