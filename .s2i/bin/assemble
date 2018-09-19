@@ -9,6 +9,8 @@ echo "Using custom assemble script"
 
 echo "Default assemble completed"
 
+LOCAL_SOURCE_DIR = /tmp/src
+
 # Copy the data model
 echo "Custom assemble to copy $LOCAL_SOURCE_DIR/data-model/target/data-model-1.0.jar to $JBOSS_HOME/standalone/lib/ext ..."
 cp $LOCAL_SOURCE_DIR/data-model/target/data-model-1.0.jar $JBOSS_HOME/standalone/lib/ext
