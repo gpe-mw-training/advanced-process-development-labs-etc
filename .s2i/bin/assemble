@@ -1,9 +1,13 @@
 #!/bin/bash
+set -eo pipefail
 
 echo "Using custom assemble script"
 
 # run default s2i actions first
-exec /usr/local/s2i/assemble
+# This script uses exit 0; how to override?
+/usr/local/s2i/assemble
+
+echo "Default assemble completed"
 
 # Copy the data model
 echo "Custom assemble to copy $LOCAL_SOURCE_DIR/data-model/target/data-model-1.0.jar to $JBOSS_HOME/standalone/lib/ext ..."
