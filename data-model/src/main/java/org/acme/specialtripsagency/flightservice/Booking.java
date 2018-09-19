@@ -57,6 +57,9 @@ public class Booking
     @XmlElement(required = true)
     protected String booking;
 
+    public Booking() {
+    }
+
     /**
      * Gets the value of the carrier property.
      * 
