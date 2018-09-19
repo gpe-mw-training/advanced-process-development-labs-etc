@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Using custom assemble script"
+
 # run default s2i actions first
 exec /usr/local/s2i/assemble
 
