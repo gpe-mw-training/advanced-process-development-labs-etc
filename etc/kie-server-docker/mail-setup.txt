@@ -1,0 +1,7 @@
+batch
+/subsystem=mail/mail-session=default:write-attribute(name=from, value=bpms@acme.org)
+/subsystem=mail/mail-session=default/server=smtp:write-attribute(name=username,value=admin)
+/subsystem=mail/mail-session=default/server=smtp:write-attribute(name=password,value=password)
+/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mail-smtp:write-attribute(name=host,value=localhost)
+/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mail-smtp:write-attribute(name=port,value=2525)
+run-batch
