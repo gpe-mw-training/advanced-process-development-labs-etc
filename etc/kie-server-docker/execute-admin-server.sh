@@ -12,6 +12,7 @@ JBOSS_CONFIG=${1:-"standalone-openshift.xml"}
 
 function wait_for_server() {
   until `$JBOSS_CLI -c ":read-attribute(name=server-state)" 2> /dev/null | grep -q running`; do
+    echo `$JBOSS_CLI -c ":read-attribute(name=server-state)"`
     sleep 1
   done
 }
@@ -21,6 +22,8 @@ echo "=> Starting EAP server"
 echo "JBOSS_HOME  : " $JBOSS_HOME
 echo "JBOSS_CLI   : " $JBOSS_CLI
 echo "JBOSS_CONFIG: " $JBOSS_CONFIG
+
+sed '/##CONSOLE-FORMATTER##/OPENSHIFT' /opt/eap/standalone/configuration/standalone-openshift.xml
 
 echo $JBOSS_HOME/bin/standalone.sh --admin-only -c $JBOSS_CONFIG &
 $JBOSS_HOME/bin/standalone.sh --admin-only -c $JBOSS_CONFIG &

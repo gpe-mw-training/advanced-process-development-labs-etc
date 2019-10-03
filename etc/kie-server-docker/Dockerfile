@@ -11,8 +11,8 @@ COPY mail-setup.txt /tmp/mail-setup.txt
 RUN chmod 644 /tmp/mail-setup.txt
 COPY execute-admin-server.sh /tmp/execute-admin-server.sh
 RUN chmod 777 /tmp/execute-admin-server.sh
-USER jboss
 COPY ./user-info.properties /home/jboss/data/
+RUN chmod 444 /tmp/mail-setup.txt
 RUN /opt/eap/bin/add-user.sh -a -u 'user1' -p 'bpms' -g 'user,kie-server,rest-task,rest-query,agent'
 RUN /opt/eap/bin/add-user.sh -a -u 'jboss' -p 'bpms' -g 'admin,analyst,user,kie-server,rest-all'
 RUN /opt/eap/bin/add-user.sh -a -u 'busadmin' -p 'bpms' -g 'Administrators,analyst,user,kie-server,rest-all'
