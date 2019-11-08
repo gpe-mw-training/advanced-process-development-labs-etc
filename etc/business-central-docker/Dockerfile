@@ -1,4 +1,4 @@
-FROM registry.redhat.io/rhpam-7/rhpam74-businesscentral-openshift
+FROM registry.redhat.io/rhpam-7/rhpam-businesscentral-rhel8
 USER root
 RUN chown jboss:jboss -R /home/jboss
 RUN chmod -R 777 /home/jboss

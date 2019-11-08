@@ -1,8 +1,8 @@
-FROM registry.redhat.io/rhpam-7/rhpam74-kieserver-openshift
+FROM registry.redhat.io/rhpam-7/rhpam-kieserver-rhel8
 
 # web services
-COPY ../flight-service/target/flight-service-1.0.war /opt/eap/standalone/deployments/
-COPY ../hotel-service/target/hotel-service-1.0.war /opt/eap/standalone/deployments/
+COPY ./flight-service-1.0.war /opt/eap/standalone/deployments/
+COPY ./hotel-service-1.0.war /opt/eap/standalone/deployments/
 COPY ./user-info.properties /home/jboss/data/
 
 USER root
