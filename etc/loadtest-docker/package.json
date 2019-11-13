@@ -1,0 +1,13 @@
+{
+  "name": "tools_load_tester",
+  "version": "1.0.0",
+  "description": "Node.js on Docker to enable load tester component",
+  "author": "Diego Torres Fuerte <dtorresf@redhat.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
