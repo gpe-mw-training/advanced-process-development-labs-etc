@@ -20,6 +20,17 @@
       </plugins>
     </pluginManagement>
   </build>
+  <dependencyManagement>
+    <dependencies>
+            <dependency>
+                <groupId>org.jboss.bom</groupId>
+                <artifactId>jboss-eap-javaee8-with-tools</artifactId>
+                <version>7.2.0.GA</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+    </dependencies>
+  </dependencyManagement>
   <modules>
     <module>flight-service</module>
     <module>data-model</module>

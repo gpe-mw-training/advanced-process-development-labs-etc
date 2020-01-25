@@ -7,4 +7,10 @@
   </parent>
   <artifactId>data-model</artifactId>
   <name>Acme :: Special Trips Agency Web Services :: Data Model</name>
+  <dependencies>
+    <dependency>
+      <groupId>org.jboss.spec.javax.xml.bind</groupId>
+      <artifactId>jboss-jaxb-api_2.3_spec</artifactId>
+    </dependency>
+  </dependencies>
 </project>
