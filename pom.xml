@@ -22,13 +22,13 @@
   </build>
   <dependencyManagement>
     <dependencies>
-       dependency>
+       <dependency>
           <groupId>org.jboss.bom</groupId>
           <artifactId>jboss-eap-javaee8</artifactId>
           <version>7.2.0.GA</version>
           <type>pom</type>
           <scope>import</scope>
-       /dependency>
+       </dependency>
     </dependencies>
   </dependencyManagement>
   <modules>
