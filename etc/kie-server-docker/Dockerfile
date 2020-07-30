@@ -1,9 +1,12 @@
-FROM registry.redhat.io/rhpam-7/rhpam-kieserver-rhel8
+# buildah bud -f etc/kie-server-docker/Dockerfile -t quay.io/rhtgptetraining/rhpam-ks-apd:7.8 .
+# podman push quay.io/rhtgptetraining/rhpam-ks-apd:7.8 
+
+FROM registry.redhat.io/rhpam-7/rhpam-kieserver-rhel8:7.8.0-3
 
 # web services
-COPY ./flight-service-1.0.war /opt/eap/standalone/deployments/
-COPY ./hotel-service-1.0.war /opt/eap/standalone/deployments/
-COPY ./user-info.properties /home/jboss/data/
+COPY ./flight-service/target/flight-service-1.0.war /opt/eap/standalone/deployments/
+COPY ./hotel-service/target/hotel-service-1.0.war /opt/eap/standalone/deployments/
+COPY ./etc/kie-server-docker/user-info.properties /home/jboss/data/
 
 USER root
 RUN chown jboss:jboss -R /home/jboss
