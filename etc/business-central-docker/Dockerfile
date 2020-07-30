@@ -1,5 +1,5 @@
 # buildah bud -f etc/business-central-docker/Dockerfile -t quay.io/rhtgptetraining/rhpam-bc-apd:7.8 .
-# podman push quay.io/rhtgptetraining/rhpam-ks-apd:7.8
+# podman push quay.io/rhtgptetraining/rhpam-bc-apd:7.8
 
 FROM registry.redhat.io/rhpam-7/rhpam-businesscentral-rhel8:7.8.0-4
 USER root
