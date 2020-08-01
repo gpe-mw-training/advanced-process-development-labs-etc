@@ -1,4 +1,7 @@
-FROM registry.redhat.io/rhpam-7/rhpam-businesscentral-rhel8
+# buildah bud -f etc/business-central-docker/Dockerfile -t quay.io/rhtgptetraining/rhpam-bc-apd:7.8 .
+# podman push quay.io/rhtgptetraining/rhpam-bc-apd:7.8
+
+FROM registry.redhat.io/rhpam-7/rhpam-businesscentral-rhel8:7.8.0-4
 USER root
 RUN chown jboss:jboss -R /home/jboss
 RUN chmod -R 777 /home/jboss
